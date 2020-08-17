@@ -4,6 +4,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class MythicLuck extends JavaPlugin {
 
+    private static MythicLuck instance;
+
+    public MythicLuck (){
+        instance = this;
+    }
+
+    public static MythicLuck getInstance() {
+        return instance;
+    }
+
     @Override
     public void onEnable() {
         // Plugin startup logic
