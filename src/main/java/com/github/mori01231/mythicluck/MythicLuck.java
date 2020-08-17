@@ -17,11 +17,13 @@ public final class MythicLuck extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
+        getLogger().info("MythicLuck has been enabled.");
         this.getCommand("switch").setExecutor(new GiveCommandExecutor());
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        getLogger().info("MythicLuck has been enabled.");
     }
 }
