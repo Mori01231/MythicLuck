@@ -7,10 +7,10 @@ authors: [Mori01231]
 description: Allows Mythic Mobs to drop loot depending on luck.
 
 commands:
-  mythicluck:
+  mythicluckgive:
     description: MythicLuckの基本コマンド。
-    aliases: [ml, mythicl, mluck]
-    usage: エラー。/mlで使用できます。
+    aliases: [mlg, mythiclg, mythicluckg]
+    usage: エラー。/mlgで使用できます。
 
 permissions:
   mythicluck.*:
