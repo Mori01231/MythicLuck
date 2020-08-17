@@ -17,7 +17,7 @@ public final class MythicLuck extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-
+        this.getCommand("switch").setExecutor(new GiveCommandExecutor());
     }
 
     @Override
