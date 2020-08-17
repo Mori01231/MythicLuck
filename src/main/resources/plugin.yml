@@ -10,7 +10,7 @@ commands:
   mythicluckgive:
     description: MythicLuckの基本コマンド。
     aliases: [mlg, mythiclg, mythicluckg]
-    usage: エラー。/mlgで使用できます。
+    usage: エラー。/mlg プレイヤー名 アイテム名 個数 確率で使用できます。
 
 permissions:
   mythicluck.*:
