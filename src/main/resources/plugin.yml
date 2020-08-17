@@ -1,0 +1,7 @@
+name: MythicLuck
+version: @version@
+main: com.github.mori01231.mythicluck.MythicLuck
+prefix: ML
+depend: [MythicMobs]
+authors: [Mori01231]
+description: Allows Mythic Mobs to drop loot depending on luck.
