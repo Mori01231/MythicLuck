@@ -5,3 +5,13 @@ prefix: ML
 depend: [MythicMobs]
 authors: [Mori01231]
 description: Allows Mythic Mobs to drop loot depending on luck.
+
+commands:
+  mythicluck:
+    description: MythicLuckの基本コマンド。
+    aliases: [ml, mythicl, mluck]
+    usage: エラー。/mlで使用できます。
+
+permissions:
+  mythicluck.*:
+    description: MythicLuckの全コマンドへのアクセスを可能にする。
