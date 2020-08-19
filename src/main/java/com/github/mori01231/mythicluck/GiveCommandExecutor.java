@@ -14,6 +14,8 @@ public class GiveCommandExecutor implements CommandExecutor {
         String playerName = args[0];
         String mmItemName = args[1];
         Integer giveNumber = 0;
+        Double luckNumber = 0.0;
+
 
         try{
             Integer mmItemNumber = Integer.valueOf(args[2]);
