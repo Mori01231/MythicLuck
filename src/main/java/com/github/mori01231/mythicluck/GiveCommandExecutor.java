@@ -13,6 +13,7 @@ public class GiveCommandExecutor implements CommandExecutor {
 
         String playerName = args[0];
         String mmItemName = args[1];
+        Integer giveNumber = 0;
 
         try{
             Integer mmItemNumber = Integer.valueOf(args[2]);
@@ -36,6 +37,7 @@ public class GiveCommandExecutor implements CommandExecutor {
             return true;
         }
 
+        sendCommand("mm i give " + playerName + " " + mmItemName + " " + giveNumber);
 
         return true;
     }
