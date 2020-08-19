@@ -37,7 +37,7 @@ public class GiveCommandExecutor implements CommandExecutor {
         }
 
 
-        return false;
+        return true;
     }
 
     public void sendCommand(String command){
