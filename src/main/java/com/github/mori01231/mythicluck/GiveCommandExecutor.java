@@ -8,6 +8,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Random;
+
 import static org.bukkit.Bukkit.getPlayer;
 import static org.bukkit.Bukkit.getServer;
 
@@ -17,14 +19,16 @@ public class GiveCommandExecutor implements CommandExecutor {
 
         String playerName = args[0];
         String mmItemName = args[1];
-        Integer giveNumber = 0;
+        String giveNumber = "0";
         Double luckNumber = 0.0;
+        Double mmItemChance = 0.0;
+        Integer mmItemNumber = 0;
         Player player = getPlayer(playerName);
 
         luckNumber = player.getAttribute(Attribute.GENERIC_LUCK).getValue();
 
         try{
-            Integer mmItemNumber = Integer.valueOf(args[2]);
+            mmItemNumber = Integer.valueOf(args[2]);
             if(mmItemNumber < 0){
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"渡す個数は正の整数で指定してください。"));
                 return true;
@@ -33,9 +37,10 @@ public class GiveCommandExecutor implements CommandExecutor {
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"渡す個数は正の整数で指定してください。"));
             return true;
         }
+        giveNumber = args[2];
 
         try{
-            Double mmItemChance = Double.valueOf(args[2]);
+            mmItemChance = Double.valueOf(args[2]);
             if (mmItemChance < 0){
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"渡す個数は正の整数または少数で指定してください。"));
                 return true;
@@ -45,7 +50,18 @@ public class GiveCommandExecutor implements CommandExecutor {
             return true;
         }
 
-        sendCommand("mm i give " + playerName + " " + mmItemName + " " + giveNumber);
+        Integer giveMultiplier = 100 + (int)Math.round(luckNumber * 10);
+        Integer giveOdds = (int)Math.round(giveMultiplier * mmItemChance);
+
+
+        // Generate random number
+        Random rand = new Random();
+        int rand_int1 = rand.nextInt(10000);
+
+        // If the random number is lower than than the chance of getting item, give item.
+        if (rand_int1 <= giveOdds){
+            sendCommand("mm i give " + playerName + " " + mmItemName + " " + giveNumber);
+        }
 
         return true;
     }
