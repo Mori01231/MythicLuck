@@ -21,13 +21,12 @@ public class GiveCommandExecutor implements CommandExecutor {
         String playerName = args[0];
         String mmItemName = args[1];
         String giveNumber = "0";
-        Double luckNumber = 0.0;
         Double mmItemChance = 0.0;
         Integer mmItemNumber = 0;
         Player player = getPlayer(playerName);
 
         // Acquire the luck value of the player
-        luckNumber = player.getAttribute(Attribute.GENERIC_LUCK).getValue();
+        Double luckNumber = player.getAttribute(Attribute.GENERIC_LUCK).getValue();
 
         // Set mmItemNumber to the third argument if it is a positive integer
         try{
