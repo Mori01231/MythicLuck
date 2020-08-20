@@ -17,6 +17,7 @@ public class GiveCommandExecutor implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
+        // declare those variables!
         String playerName = args[0];
         String mmItemName = args[1];
         String giveNumber = "0";
@@ -25,8 +26,10 @@ public class GiveCommandExecutor implements CommandExecutor {
         Integer mmItemNumber = 0;
         Player player = getPlayer(playerName);
 
+        // Acquire the luck value of the player
         luckNumber = player.getAttribute(Attribute.GENERIC_LUCK).getValue();
 
+        // Set mmItemNumber to the third argument if it is a positive integer
         try{
             mmItemNumber = Integer.valueOf(args[2]);
             if(mmItemNumber < 0){
@@ -39,6 +42,7 @@ public class GiveCommandExecutor implements CommandExecutor {
         }
         giveNumber = args[2];
 
+        // Set mmItemNumber to the third argument if it is a positive double
         try{
             mmItemChance = Double.valueOf(args[2]);
             if (mmItemChance < 0){
@@ -50,6 +54,7 @@ public class GiveCommandExecutor implements CommandExecutor {
             return true;
         }
 
+        // Calculate the odds the player will be getting the item
         Integer giveMultiplier = 100 + (int)Math.round(luckNumber * 10);
         Integer giveOdds = (int)Math.round(giveMultiplier * mmItemChance);
 
@@ -66,6 +71,7 @@ public class GiveCommandExecutor implements CommandExecutor {
         return true;
     }
 
+    // functions to make sending commands a lot shorter
     public void sendCommand(String command){
         getServer().dispatchCommand(getServer().getConsoleSender(), command);
     }
