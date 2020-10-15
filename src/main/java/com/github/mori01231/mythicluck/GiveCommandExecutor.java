@@ -26,7 +26,7 @@ public class GiveCommandExecutor implements CommandExecutor {
         Player player = getPlayer(playerName);
 
         // Acquire the luck value of the player
-        Double luckAttribute = player.getAttribute(Attribute.GENERIC_LUCK).getValue();
+        Double luckNumber = player.getAttribute(Attribute.GENERIC_LUCK).getValue();
 
         // Only for debug to determine if the correct luck value is read by plugin
         //sender.sendMessage(ChatColor.translateAlternateColorCodes('&', String.valueOf(luckNumber)));
@@ -57,7 +57,7 @@ public class GiveCommandExecutor implements CommandExecutor {
 
 
         // Calculate the odds the player will be getting the item
-        Integer giveMultiplier = 100 + (int)Math.round(luckAttribute * 10);
+        Integer giveMultiplier = 100 + (int)Math.round(luckNumber * 10);
         Integer giveOdds = (int)Math.round(giveMultiplier * mmItemChance);
 
 
@@ -67,7 +67,11 @@ public class GiveCommandExecutor implements CommandExecutor {
 
         // If the random number is lower than than the chance of getting item, give item.
         if (rand_int1 <= giveOdds){
-            sendCommand("mm i give " + playerName + " " + mmItemName + " " + giveNumber);
+            String mmGiveString = "mm i give " + playerName + " " + mmItemName + " " + mmItemNumber;
+            sendCommand(mmGiveString);
+
+            // Used for debug only
+            //sender.sendMessage(mmGiveString);
         }
 
         return true;
