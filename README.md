@@ -12,4 +12,8 @@
 
 - [Mori01231](https://github.com/Mori01231)
 
+# Commands
+
+- ``/mlg プレイヤー名 アイテム名 確率 個数`` アイテム名はMM内でのアイテム名、確率の単位は%、個数は正の整数。
+
 <!-- CREATED_BY_LEADYOU_README_GENERATOR -->
