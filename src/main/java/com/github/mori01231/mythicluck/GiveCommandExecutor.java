@@ -28,20 +28,10 @@ public class GiveCommandExecutor implements CommandExecutor {
         // Acquire the luck value of the player
         Double luckNumber = player.getAttribute(Attribute.GENERIC_LUCK).getValue();
 
-        // Set mmItemNumber to the third argument if it is a positive integer
-        try{
-            mmItemNumber = Integer.valueOf(args[2]);
-            if(mmItemNumber < 0){
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"渡す個数は正の整数で指定してください。"));
-                return true;
-            }
-        }catch(Exception e){
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"渡す個数は正の整数で指定してください。"));
-            return true;
-        }
-        giveNumber = args[2];
+        // Only for debug to determine if the correct luck value is read by plugin
+        //sender.sendMessage(ChatColor.translateAlternateColorCodes('&', String.valueOf(luckNumber)));
 
-        // Set mmItemNumber to the third argument if it is a positive double
+        // Set mmItemChance to the third argument if it is a positive double
         try{
             mmItemChance = Double.valueOf(args[2]);
             if (mmItemChance < 0){
@@ -52,6 +42,19 @@ public class GiveCommandExecutor implements CommandExecutor {
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"渡す個数は正の整数または少数で指定してください。"));
             return true;
         }
+
+        // Set mmItemNumber to the fourth argument if it is a positive integer
+        try{
+            mmItemNumber = Integer.valueOf(args[3]);
+            if(mmItemNumber < 0){
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"渡す個数は正の整数で指定してください。"));
+                return true;
+            }
+        }catch(Exception e){
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"渡す個数は正の整数で指定してください。"));
+            return true;
+        }
+
 
         // Calculate the odds the player will be getting the item
         Integer giveMultiplier = 100 + (int)Math.round(luckNumber * 10);
